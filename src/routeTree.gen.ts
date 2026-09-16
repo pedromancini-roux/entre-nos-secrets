@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AindaNaoAconteceuRouteImport } from './routes/ainda-nao-aconteceu'
+import { Route as ArquivoRouteImport } from './routes/arquivo'
+import { Route as CoisasQueGuardeiRouteImport } from './routes/coisas-que-guardei'
+import { Route as EntreNosRouteImport } from './routes/entre-nos'
+import { Route as ParaLerRouteImport } from './routes/para-ler'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AindaNaoAconteceuRoute = AindaNaoAconteceuRouteImport.update({
+  id: '/ainda-nao-aconteceu',
+  path: '/ainda-nao-aconteceu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArquivoRoute = ArquivoRouteImport.update({
+  id: '/arquivo',
+  path: '/arquivo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoisasQueGuardeiRoute = CoisasQueGuardeiRouteImport.update({
+  id: '/coisas-que-guardei',
+  path: '/coisas-que-guardei',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntreNosRoute = EntreNosRouteImport.update({
+  id: '/entre-nos',
+  path: '/entre-nos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParaLerRoute = ParaLerRouteImport.update({
+  id: '/para-ler',
+  path: '/para-ler',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ainda-nao-aconteceu': typeof AindaNaoAconteceuRoute
+  '/arquivo': typeof ArquivoRoute
+  '/coisas-que-guardei': typeof CoisasQueGuardeiRoute
+  '/entre-nos': typeof EntreNosRoute
+  '/para-ler': typeof ParaLerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ainda-nao-aconteceu': typeof AindaNaoAconteceuRoute
+  '/arquivo': typeof ArquivoRoute
+  '/coisas-que-guardei': typeof CoisasQueGuardeiRoute
+  '/entre-nos': typeof EntreNosRoute
+  '/para-ler': typeof ParaLerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ainda-nao-aconteceu': typeof AindaNaoAconteceuRoute
+  '/arquivo': typeof ArquivoRoute
+  '/coisas-que-guardei': typeof CoisasQueGuardeiRoute
+  '/entre-nos': typeof EntreNosRoute
+  '/para-ler': typeof ParaLerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/ainda-nao-aconteceu'
+    | '/arquivo'
+    | '/coisas-que-guardei'
+    | '/entre-nos'
+    | '/para-ler'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/ainda-nao-aconteceu'
+    | '/arquivo'
+    | '/coisas-que-guardei'
+    | '/entre-nos'
+    | '/para-ler'
+  id:
+    | '__root__'
+    | '/'
+    | '/ainda-nao-aconteceu'
+    | '/arquivo'
+    | '/coisas-que-guardei'
+    | '/entre-nos'
+    | '/para-ler'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AindaNaoAconteceuRoute: typeof AindaNaoAconteceuRoute
+  ArquivoRoute: typeof ArquivoRoute
+  CoisasQueGuardeiRoute: typeof CoisasQueGuardeiRoute
+  EntreNosRoute: typeof EntreNosRoute
+  ParaLerRoute: typeof ParaLerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ainda-nao-aconteceu': {
+      id: '/ainda-nao-aconteceu'
+      path: '/ainda-nao-aconteceu'
+      fullPath: '/ainda-nao-aconteceu'
+      preLoaderRoute: typeof AindaNaoAconteceuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/arquivo': {
+      id: '/arquivo'
+      path: '/arquivo'
+      fullPath: '/arquivo'
+      preLoaderRoute: typeof ArquivoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coisas-que-guardei': {
+      id: '/coisas-que-guardei'
+      path: '/coisas-que-guardei'
+      fullPath: '/coisas-que-guardei'
+      preLoaderRoute: typeof CoisasQueGuardeiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entre-nos': {
+      id: '/entre-nos'
+      path: '/entre-nos'
+      fullPath: '/entre-nos'
+      preLoaderRoute: typeof EntreNosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/para-ler': {
+      id: '/para-ler'
+      path: '/para-ler'
+      fullPath: '/para-ler'
+      preLoaderRoute: typeof ParaLerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AindaNaoAconteceuRoute: AindaNaoAconteceuRoute,
+  ArquivoRoute: ArquivoRoute,
+  CoisasQueGuardeiRoute: CoisasQueGuardeiRoute,
+  EntreNosRoute: EntreNosRoute,
+  ParaLerRoute: ParaLerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
